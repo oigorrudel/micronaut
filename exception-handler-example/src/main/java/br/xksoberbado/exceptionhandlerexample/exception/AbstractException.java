@@ -8,7 +8,7 @@ public abstract class AbstractException extends RuntimeException {
     private AbstractException() {
     }
 
-    protected AbstractException(final String message, final String code) {
+    protected AbstractException(final String code, final String message) {
         super(message);
         this.code = code;
         this.message = message;

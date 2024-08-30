@@ -5,10 +5,10 @@ public class BusinessException extends AbstractException {
     private static final String CODE = "BUSINESS";
 
     public BusinessException(final String message) {
-        this(message, CODE);
+        this(CODE, message);
     }
 
-    public BusinessException(final String message, final String code) {
-        super(message, code);
+    public BusinessException(final String code, final String message) {
+        super(code, message);
     }
 }

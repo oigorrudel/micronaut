@@ -16,6 +16,7 @@ public class CustomErrorResponseProcessor implements ErrorResponseProcessor<Cust
                                                                      @NonNull final MutableHttpResponse<?> response) {
         final var error = new MyJsonError();
         error.setPath(errorContext.getRequest().getPath());
+        error.setMessage(errorContext.getErrors().get(0).getMessage());
 
         return response
             .body(error)
@@ -25,6 +26,8 @@ public class CustomErrorResponseProcessor implements ErrorResponseProcessor<Cust
     @Serdeable
     public static class MyJsonError {
         private String path;
+        private String code;
+        private String message;
 
         public String getPath() {
             return path;
@@ -32,6 +35,22 @@ public class CustomErrorResponseProcessor implements ErrorResponseProcessor<Cust
 
         public void setPath(final String path) {
             this.path = path;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(final String code) {
+            this.code = code;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(final String message) {
+            this.message = message;
         }
     }
 }
