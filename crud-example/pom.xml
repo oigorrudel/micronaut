@@ -154,7 +154,7 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <arg>-Amicronaut.processing.group=br.xksoberbado</arg>
+                        <arg>-Amicronaut.processing.group=br.xksoberbado.crudexample</arg>
                         <arg>-Amicronaut.processing.module=crud-example</arg>
                     </compilerArgs>
                 </configuration>
