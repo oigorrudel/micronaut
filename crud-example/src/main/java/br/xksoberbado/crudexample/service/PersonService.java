@@ -23,6 +23,7 @@ public class PersonService {
     public Person toCreate(final PersonBody body) {
         final var person = new Person();
         person.setName(body.name());
+        person.setGender(body.gender());
 
         return repository.save(person);
     }
@@ -32,6 +33,7 @@ public class PersonService {
         return repository.findById(id)
             .map(person -> {
                 person.setName(body.name());
+                person.setGender(body.gender());
 
                 return repository.update(person);
             })

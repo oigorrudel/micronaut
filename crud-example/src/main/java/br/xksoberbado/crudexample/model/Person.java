@@ -3,9 +3,7 @@ package br.xksoberbado.crudexample.model;
 import io.micronaut.data.annotation.DateCreated;
 import io.micronaut.data.annotation.DateUpdated;
 import io.micronaut.serde.annotation.Serdeable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -19,6 +17,9 @@ public class Person {
     private UUID id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @DateCreated
     private LocalDateTime createdAt;
@@ -40,6 +41,14 @@ public class Person {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(final Gender gender) {
+        this.gender = gender;
     }
 
     public LocalDateTime getCreatedAt() {
