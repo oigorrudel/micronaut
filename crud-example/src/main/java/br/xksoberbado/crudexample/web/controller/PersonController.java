@@ -7,10 +7,13 @@ import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
+import io.micronaut.validation.Validated;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 
 import java.util.UUID;
 
+@Validated
 @Controller("v1/persons")
 public class PersonController {
 
@@ -24,13 +27,13 @@ public class PersonController {
 
     @Post
     @Status(HttpStatus.CREATED)
-    public Person post(@Body final PersonBody body) {
+    public Person post(@Body @Valid final PersonBody body) {
         return service.toCreate(body);
     }
 
     @Put("{id}")
     public Person put(@PathVariable final UUID id,
-                      @Body final PersonBody body) {
+                      @Body @Valid final PersonBody body) {
         return service.toUpdate(id, body);
     }
 
